@@ -2,6 +2,8 @@
 
 Requirement authorization is a lightweight DSL designed to separate the concerns of resource access from gathering information required to access the resource.
 
+WARNING: This puppy isn't tested yet, but its the very next thing I plan on doing. I wanted to get this up on github first so that we could gemify this into our own project and build out tests.
+
 ## Installation
 
 In your rails config/environment.rb file, just add
