@@ -1,3 +1,3 @@
-require File.dirname(__FILE__) + '/lib/requirement_authorization.rb'
+require File.dirname(__FILE__) + '/../lib/requirement_authorization.rb'
 
-ActionController::Base.send :include, RequirementAuthentication
+ActionController::Base.send(:include, RequirementAuthorization)

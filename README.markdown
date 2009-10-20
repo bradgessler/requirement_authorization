@@ -8,15 +8,15 @@ WARNING: This puppy isn't tested yet, but its the very next thing I plan on doin
 
 In your rails config/environment.rb file, just add
 
-    config.gem 'requirement_authorization', :source => 'http://gems.gemcutter.org/'
+    config.gem 'requirement_authorization', :source => 'http://gemcutter.org'
 
 ## Examples
 
 A more interesting example may be to protect a paid feature from being accessed by users who did not pay for that feature:
 
     requirement :feature do |r|
-      r.guard_unless  {|feature| current_user.account.send("#{feature}_enabled?") }
-      r.resolution    {|feature| redirect_to upgrade_path(feature) }
+      r.guard_unless  { |feature| current_user.account.send("#{feature}_enabled?") }
+      r.resolution    { |feature| redirect_to upgrade_path(feature) }
     end
 
 In the controller just add
