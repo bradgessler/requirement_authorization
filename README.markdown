@@ -5,8 +5,8 @@ Requirement authorization is a lightweight DSL designed to separate the concerns
 A more interesting example may be to protect a paid feature from being accessed by users who did not pay for that feature:
 
     requirement :feature do |r|
-      r.resolution    {|feature| redirect_to upgrade_path(feature) }
       r.guard_unless  {|feature| current_user.account.send("#{feature}_enabled?") }
+      r.resolution    {|feature| redirect_to upgrade_path(feature) }
     end
 
 In the controller just add
@@ -18,8 +18,8 @@ In the controller just add
 A more trivial example for SSL
 
     requirement :ssl do |r|
-      r.resolution    { redirect_to "https://" + request.host + request.request_uri }
       r.guard_unless  { request.ssl? }
+      r.resolution    { redirect_to "https://" + request.host + request.request_uri }
     end
   
 Then in the controller:
