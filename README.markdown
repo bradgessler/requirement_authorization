@@ -1,7 +1,15 @@
-# Requirement Authorization Overview
+# Requirement Authorization
 
 Requirement authorization is a lightweight DSL designed to separate the concerns of resource access from gathering information required to access the resource.
-    
+
+## Installation
+
+In your rails config/environment.rb file, just add
+
+    config.gem 'requirement_authorization', :source => 'http://gems.gemcutter.org/'
+
+## Examples
+
 A more interesting example may be to protect a paid feature from being accessed by users who did not pay for that feature:
 
     requirement :feature do |r|
@@ -28,7 +36,7 @@ Then in the controller:
       ssl_required
     end
   
-# License
+## License
 
 Copyright (c) 2009 Brad Gessler
 
