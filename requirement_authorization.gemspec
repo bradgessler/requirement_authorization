@@ -11,7 +11,6 @@ Gem::Specification.new do |spec|
   spec.summary       = %q{Quickly create before_filters in Rails that protect resources.}
   spec.homepage      = "https://github.com/bradgessler/requirement_authorization"
   spec.license       = "MIT"
-  spec.date           = "2009-10-20"
 
   spec.files         = `git ls-files`.split($/)
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
