@@ -1,4 +1,5 @@
-# TODO release this as a plugin as it matures
+require "requirement_authorization/version"
+
 module RequirementAuthorization
   METHOD_SUFIX = '_required'
   
