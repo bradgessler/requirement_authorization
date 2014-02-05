@@ -33,11 +33,15 @@ module RequirementAuthorization
     # Sets up the filter for the controller by wrapping this requirement up in a proc.
     def filter(controller, *args)
       args, controller_options = extract_filter_args!(args)
-      controller.before_filter Proc.new{|c| self.call(c, *args)}, controller_options
+      # Rails 3 does something `self` in the controller block, so 
+      # I create the `requirement` reference and pass it into the controller block
+      # for resolution.
+      requirement = self
+      controller.before_filter(controller_options){ |c| requirement.resolve(c, *args) }
     end
     
     # The gaurd, resolution process. This is where the magic happens.
-    def call(controller_instance, *args)
+    def resolve(controller_instance, *args)
       @resolution.call(controller_instance, *args) if @guard.call(controller_instance, *args)
     end
     
