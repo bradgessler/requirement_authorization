@@ -34,7 +34,9 @@ module RequirementAuthorization
     # Sets up the filter for the controller by wrapping this requirement up in a proc.
     def filter(controller, *args)
       args, controller_options = extract_filter_args!(args)
-      controller.before_filter(controller_options){ |c| resolve(c, *args) }
+      # Capture the Method object here in case the scope of the block changes
+      resolve_method = method(:resolve)
+      controller.before_filter(controller_options){ |c| resolve_method.call(c, *args) }
     end
 
     # The gaurd, resolution process. This is where the magic happens.
